@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breast Cancer Prediction</title>
+</head>
+<body>
+    <h2>Breast Cancer Prediction</h2>
+    <form method="POST" action="/predict">
+        {% for i in range(1, 10) %}
+            <label>Feature {{ i }} (1–10):</label>
+            <select name="feature{{ i }}">
+                {% for val in range(1, 11) %}
+                    <option value="{{ val }}">{{ val }}</option>
+                {% endfor %}
+            </select><br><br>
+        {% endfor %}
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction is not none %}
+        <h3>Prediction: {{ prediction }}</h3>
+    {% endif %}
+</body>
+</html>
