@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # ✅ Fix shallow clone issue
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -26,13 +28,14 @@ jobs:
       - name: Deploy to Heroku via Git
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
         run: |
           echo "machine git.heroku.com" > ~/.netrc
-          echo "  login ${{ secrets.HEROKU_EMAIL }}" >> ~/.netrc
-          echo "  password ${{ secrets.HEROKU_API_KEY }}" >> ~/.netrc
+          echo "  login $HEROKU_EMAIL" >> ~/.netrc
+          echo "  password $HEROKU_API_KEY" >> ~/.netrc
 
           git config --global user.name "GitHub Actions"
-          git config --global user.email "${{ secrets.HEROKU_EMAIL }}"
+          git config --global user.email "$HEROKU_EMAIL"
 
           git remote add heroku https://git.heroku.com/aborobot-tech-2025.git
           git push heroku HEAD:main -f
