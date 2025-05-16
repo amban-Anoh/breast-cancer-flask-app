@@ -23,7 +23,7 @@ This project demonstrates a full machine learning deployment pipeline using Flas
 
 ---
 
-## 📎 Useful Links
+## Useful Links
 
 - **GitHub Repository:** [https://github.com/amban-Anoh/breast-cancer-flask-app](https://github.com/amban-Anoh/breast-cancer-flask-app)
 - **Live Heroku App:** [https://aborobot-tech-2025-551cac8bd375.herokuapp.com](https://aborobot-tech-2025-551cac8bd375.herokuapp.com)
